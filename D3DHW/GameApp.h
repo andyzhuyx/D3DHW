@@ -6,8 +6,29 @@
 #include <D3DCompiler.h>
 #include "Vertex.h"
 #include "Camera.h"
-
+#include "DDSTextureLoader.h"
+#include "WICTextureLoader.h"
 class Game : public GameApp{
+public:
+	class DrawObject {
+	public:
+		DrawObject();
+
+		DirectX::XMFLOAT3 GetPos() const;
+		bool SetBufferPT(ID3D11Device* device, const PTMeshData& dataset);
+		void SetTexture(ID3D11ShaderResourceView* texture);
+		void SetObjWorld(const DirectX::XMFLOAT4X4& world);
+		void Draw(ID3D11DeviceContext* deviceContext);
+	private:
+		ComPtr<ID3D11Buffer> _pVertexBuffer;
+		ComPtr<ID3D11Buffer> _pIndexBuffer;
+		ComPtr<ID3D11ShaderResourceView> _pTexture;
+		UINT _Stride; // Vertex Byte Size				
+		UINT _NumOfIndex;
+
+		DirectX::XMFLOAT4X4 _ObjWorld;
+	};
+
 public:
 	Game(HINSTANCE hInst);
 	~Game();
@@ -40,9 +61,7 @@ private:
 private:
 	ComPtr<ID3D11InputLayout> _pInputLayout;
 	ComPtr<ID3D11VertexShader> _pVertexShader;
-	ComPtr<ID3D11Buffer> _pVertexBuffer;
-	
-	ComPtr<ID3D11Buffer> _pIndexBuffer;
+
 	ComPtr<ID3D11PixelShader> _pPixelShader;
 
 	ComPtr<ID3D11SamplerState> _pSamplerState;
@@ -55,5 +74,9 @@ private:
 	CBufferCamera _CCamera;
 	CBufferProj _CProj;
 	// Camera
-	FirstPersonCamera _FPCamera;
+	std::shared_ptr<Camera> _pFPCamera;
+
+	// World Picture
+	DrawObject _pWallsArr[6];
+
 };

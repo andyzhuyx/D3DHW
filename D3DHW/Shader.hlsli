@@ -1,9 +1,19 @@
-cbuffer cBuffer : register(b0) {
+cbuffer CBWorld : register(b0) {
 	matrix world;
+	matrix worldInv;
+}
+
+cbuffer CBCamera : register(b1) {
 	matrix view;
+	matrix eye;
+}
+
+cbuffer CBProj : register(b2) {
 	matrix proj;
 }
 
+SamplerState _Sampler : register(s0);
+Texture2D _Texture : register(t0);
 // for original input
 struct VertexPosTex
 {

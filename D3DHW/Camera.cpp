@@ -121,6 +121,11 @@ void XM_CALLCONV FirstPersonCamera::SetLookAt(const DirectX::XMVECTOR& pos, cons
 	XMStoreFloat3(&_RightDirection, r);
 }
 
+void FirstPersonCamera::SetLookAt(const DirectX::XMFLOAT3& pos, const DirectX::XMFLOAT3& focus, const DirectX::XMFLOAT3& upDir) {
+	using namespace DirectX;
+	SetLookAt(XMLoadFloat3(&pos), XMLoadFloat3(&focus), XMLoadFloat3(&upDir));
+}
+
 void FirstPersonCamera::Walk(float distance) {
 	// Move alone LookAt
 	using namespace DirectX;

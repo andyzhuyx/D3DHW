@@ -125,19 +125,24 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="D3DApp.cpp" />
+    <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="Keyboard.cpp" />
     <ClCompile Include="MainWindow.cpp" />
-    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="WICTextureLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="D3DApp.h" />
+    <ClInclude Include="DDSTextureLoader.h" />
     <ClInclude Include="GameApp.h" />
+    <ClInclude Include="Keyboard.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Vertex.h" />
+    <ClInclude Include="WICTextureLoader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader.hlsli" />
@@ -155,6 +160,13 @@
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)%(Filename).cso</ObjectFileOutput>
     </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="floor.png" />
+    <Image Include="sky.jpg" />
+    <Image Include="wall.png" />
+    <Image Include="WoodCrate.dds" />
+    <Image Include="world.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

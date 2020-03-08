@@ -5,6 +5,7 @@
 #include <DirectXMath.h>
 #include <string>
 #include "Timer.h"
+#include "Keyboard.h"
 
 #pragma comment(lib, "d3d11.lib")
 #pragma comment(lib, "dxgi.lib")
@@ -62,5 +63,6 @@ protected:
 	// timer
 	Timer _gameTimer;
 	// keyboard
+	Keyboard kbd;
 	// mouse
 };

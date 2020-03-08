@@ -52,6 +52,7 @@ public:
 	~FirstPersonCamera() override;
 	void SetPosition(const DirectX::XMFLOAT3& pos);
 	void XM_CALLCONV SetLookAt(const DirectX::XMVECTOR& pos, const DirectX::XMVECTOR& focus, const DirectX::XMVECTOR& upDir);
+	void SetLookAt(const DirectX::XMFLOAT3& pos, const DirectX::XMFLOAT3& focus, const DirectX::XMFLOAT3& upDir);
 
 	void Walk(float dis);
 	void Pan(float dis);

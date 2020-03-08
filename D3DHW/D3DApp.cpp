@@ -26,7 +26,8 @@ GameApp::GameApp(HINSTANCE hInst)
 	_pDepthStencilView(nullptr),
 	_windowTitle(L"D3DAPP"),
 	_width(800),
-	_height(600)
+	_height(600),
+	kbd()
 {
 	ZeroMemory(&_viewport, sizeof(_viewport));
 	msgptr = this;
@@ -191,7 +192,19 @@ LRESULT GameApp::MsgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 		_gameTimer.Start();
 		OnResize();
 		return 0;
+
+
+	/*Keyboard Event*/
+	case WM_KEYDOWN:
+	case WM_SYSKEYDOWN:
+		kbd.OnKeyPressed(static_cast<unsigned char>(wParam));
+		return 0;
+	case WM_KEYUP:
+	case WM_SYSKEYUP:
+		kbd.OnKeyReleased(static_cast<unsigned char>(wParam));
+		return 0;
 	}
+
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
